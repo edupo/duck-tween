@@ -53,11 +53,11 @@ namespace DUCK.Tween
 			}
 			else if (willUseLocalPosition)
 			{
-				TargetObject.transform.localPosition = position;
+				(TargetObject as GameObject).transform.localPosition = position;
 			}
 			else
 			{
-				TargetObject.transform.position = position;
+				(TargetObject as GameObject).transform.position = position;
 			}
 		}
 	}

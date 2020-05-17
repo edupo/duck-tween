@@ -29,7 +29,7 @@ namespace DUCK.Tween
 		/// <summary>
 		/// The target gameobject of the this animation
 		/// </summary>
-		public GameObject TargetObject { get; }
+		public UnityEngine.Object TargetObject { get; }
 
 		/// <summary>
 		/// The RectTransform of the target game object, null if it doesn't have one
@@ -66,7 +66,7 @@ namespace DUCK.Tween
 
 		protected TimedAnimation() {}
 
-		protected TimedAnimation(GameObject targetGameObject, float duration, Func<float, float> easingFunction = null)
+		protected TimedAnimation(UnityEngine.Object targetGameObject, float duration, Func<float, float> easingFunction = null)
 		{
 			TargetObject = targetGameObject;
 			Duration = duration;

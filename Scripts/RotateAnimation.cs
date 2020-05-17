@@ -63,11 +63,11 @@ namespace DUCK.Tween
 
 			if (willUseLocalRotation)
 			{
-				TargetObject.transform.localRotation = rotation;
+				(TargetObject as GameObject).transform.localRotation = rotation;
 			}
 			else
 			{
-				TargetObject.transform.rotation = rotation;
+				(TargetObject as GameObject).transform.rotation = rotation;
 			}
 		}
 	}

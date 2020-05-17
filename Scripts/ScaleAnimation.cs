@@ -43,7 +43,7 @@ namespace DUCK.Tween
 
 		protected override void Refresh(float progress)
 		{
-			TargetObject.transform.localScale = Interpolate(from, to, progress);
+			(TargetObject as GameObject).transform.localScale = Interpolate(from, to, progress);
 		}
 	}
 }
