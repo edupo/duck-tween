@@ -8,7 +8,7 @@ namespace DUCK.Tween
 	/// </summary>
 	public class ColorShaderPropertyAnimation : AbstractColorFadeAnimation
 	{
-		private readonly Renderer renderer;
+		private readonly Material material;
 		private readonly int shaderPropertyID;
 
 		/// <summary>
@@ -19,7 +19,7 @@ namespace DUCK.Tween
 		/// <param name="to">The end color of the fade</param>
 		/// <param name="duration">The duration of the animation in seconds, defaults to 1f</param>
 		/// <param name="easingFunction">The easing function that will be used to interpolate with</param>
-		public ColorShaderPropertyAnimation(Renderer target, Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
+		public ColorShaderPropertyAnimation(Material target, Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
 			: this(target, Shader.PropertyToID("_Color"), from, to, duration, easingFunction)
 		{
 		}
@@ -33,7 +33,7 @@ namespace DUCK.Tween
 		/// <param name="to">The end color of the fade</param>
 		/// <param name="duration">The duration of the animation in seconds, defaults to 1f</param>
 		/// <param name="easingFunction">The easing function that will be used to interpolate with</param>
-		public ColorShaderPropertyAnimation(Renderer target, string propertyName,  Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
+		public ColorShaderPropertyAnimation(Material target, string propertyName,  Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
 			: this(target, Shader.PropertyToID(propertyName), from, to, duration, easingFunction)
 		{
 		}
@@ -47,16 +47,16 @@ namespace DUCK.Tween
 		/// <param name="to">The end color of the fade</param>
 		/// <param name="duration">The duration of the animation in seconds, defaults to 1f</param>
 		/// <param name="easingFunction">The easing function that will be used to interpolate with</param>
-		public ColorShaderPropertyAnimation(Renderer target, int propertyID, Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
-			: base(target.gameObject, from, to, duration, easingFunction)
+		public ColorShaderPropertyAnimation(Material target, int propertyID, Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
+			: base(target, from, to, duration, easingFunction)
 		{
-			renderer = target;
+			material = target;
 			shaderPropertyID = propertyID;
 		}
 
 		protected override void SetColor(Color color)
 		{
-			renderer.material.SetColor(shaderPropertyID, color);
+			material.SetColor(shaderPropertyID, color);
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace DUCK.Tween
 		private readonly Color from;
 		private readonly Color to;
 
-		protected AbstractColorFadeAnimation(GameObject target, Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
+		protected AbstractColorFadeAnimation(UnityEngine.Object target, Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
 			: base(target, duration, easingFunction)
 		{
 			this.from = from;

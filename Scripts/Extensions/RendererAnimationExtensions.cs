@@ -16,7 +16,7 @@ namespace DUCK.Tween.Extensions
 		/// <returns>The RendererColorFadeAnimation created</returns>
 		public static ColorShaderPropertyAnimation ColorFade(this Renderer renderer, Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
 		{
-			return new ColorShaderPropertyAnimation(renderer, from, to, duration, easingFunction);
+			return new ColorShaderPropertyAnimation(renderer.material, from, to, duration, easingFunction);
 		}
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace DUCK.Tween.Extensions
 		/// <returns>The RendererFadeAnimation created</returns>
 		public static ColorShaderPropertyAnimation ColorFade(this Renderer renderer, string shaderProperty, Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
 		{
-			return new ColorShaderPropertyAnimation(renderer, shaderProperty, from, to, duration, easingFunction);
+			return new ColorShaderPropertyAnimation(renderer.material, shaderProperty, from, to, duration, easingFunction);
 		}
 
 		/// <summary>
@@ -46,7 +46,7 @@ namespace DUCK.Tween.Extensions
 		/// <returns>The RendererFadeAnimation created</returns>
 		public static ColorShaderPropertyAnimation ColorFade(this Renderer renderer, int shaderPropertyID, Color from, Color to, float duration = 1f, Func<float, float> easingFunction = null)
 		{
-			return new ColorShaderPropertyAnimation(renderer, shaderPropertyID, from, to, duration, easingFunction);
+			return new ColorShaderPropertyAnimation(renderer.material, shaderPropertyID, from, to, duration, easingFunction);
 		}
 
 		/// <summary>
@@ -88,7 +88,7 @@ namespace DUCK.Tween.Extensions
 		public static DelegateAnimation<ColorShaderPropertyAnimation> ColorFadeTo(this Renderer renderer, int shaderPropertyID, Color to, float duration = 1f, Func<float, float> easingFunction = null)
 		{
 			var animation = new DelegateAnimation<ColorShaderPropertyAnimation>(() =>
-				new ColorShaderPropertyAnimation(renderer, shaderPropertyID, renderer.material.GetColor(shaderPropertyID), to, duration, easingFunction));
+				new ColorShaderPropertyAnimation(renderer.material, shaderPropertyID, renderer.material.GetColor(shaderPropertyID), to, duration, easingFunction));
 			return animation;
 		}
 
